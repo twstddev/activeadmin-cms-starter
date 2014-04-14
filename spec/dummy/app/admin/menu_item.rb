@@ -25,4 +25,24 @@ ActiveAdmin.register MenuItem do
 
 		f.actions
 	end
+
+	controller do
+		def create
+			create! do |format|
+				format.html { redirect_to_index }
+			end
+		end
+
+		def update
+			update! do |format|
+				format.html { redirect_to_index }
+			end
+		end
+
+		private
+
+			def redirect_to_index
+				redirect_to admin_menu_items_url
+			end
+	end
 end
