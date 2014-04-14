@@ -16,6 +16,15 @@ GIT
       ransack (~> 1.0)
       sass-rails
 
+GIT
+  remote: git://github.com/nebirhos/activeadmin-sortable-tree.git
+  revision: d4f28e8d0700afa5646b8a7dbaaf89ac3b47383e
+  branch: master
+  specs:
+    activeadmin-sortable-tree (0.0.1)
+      activeadmin
+      rails (>= 3.2)
+
 PATH
   remote: .
   specs:
@@ -189,6 +198,7 @@ PLATFORMS
 
 DEPENDENCIES
   activeadmin!
+  activeadmin-sortable-tree!
   activeadmincms!
   capybara
   database_cleaner

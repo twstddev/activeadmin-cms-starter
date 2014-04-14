@@ -13,3 +13,4 @@ gemspec
 # To use debugger
 # gem 'debugger'
 gem "activeadmin", github: "gregbell/active_admin"
+gem "activeadmin-sortable-tree", :github => "nebirhos/activeadmin-sortable-tree", :branch => "master"

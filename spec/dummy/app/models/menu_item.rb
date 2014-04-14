@@ -3,4 +3,8 @@ class MenuItem < ActiveRecord::Base
 	belongs_to :parent, class_name: "MenuItem"
 
 	validates :title, :url, presence: true
+
+	def self.roots 
+		MenuItem.where( parent_id: nil )
+	end
 end
