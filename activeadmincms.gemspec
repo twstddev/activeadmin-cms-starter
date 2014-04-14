@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.version     = Activeadmincms::VERSION
   s.authors     = ["Rustam Chakin"]
   s.email       = ["twstd.dev@gmail.com"]
-  s.homepage    = "TODO"
+  s.homepage    = "https://github.com/twstddev/activeadmin-cms-starter"
   s.summary     = "A simple page and meta fields functionality."
   s.description = "This gem adds basic page scaffold and support for nested meta fields based on model serialize field."
 
@@ -17,7 +17,6 @@ Gem::Specification.new do |s|
   s.test_files = Dir["test/**/*"]
 
   s.add_dependency "rails", "~> 4.0.4"
-  s.add_dependency "activeadmin"
 
   s.add_development_dependency "sqlite3"
   s.add_development_dependency "rspec-rails"
