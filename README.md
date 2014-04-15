@@ -8,10 +8,10 @@ Provides:
 * Pages
 * Menu
 * Main controllers that provide public JSON API for pages and menu
-* jsbuilder( JSON ) templates
+* jbuilder( JSON ) templates
 * slug support
 * custom meta fields
 * nested meta fields
 * file browser
 * WYSIWYG editor
-* Javascript botostrap file for single page applications
+* Javascript bootstrap file for single page applications
