@@ -7,10 +7,13 @@ class Page < ActiveRecord::Base
 	validates :slug, uniqueness: true
 	validate :validate_template
 
+	before_validation :prepare_slug
+
 	after_initialize :init
 
 	def init
 		self.template ||= ""
+		self.slug ||= ""
 	end
 
 	##
@@ -28,6 +31,14 @@ class Page < ActiveRecord::Base
 		}
 	end
 
+	##
+	# @brief Tells friendly id when actually to generate
+	# a slug for the page.
+	##
+	def should_generate_new_friendly_id?
+		slug.blank?
+	end
+
 	private
 		##
 		# @brief Makes sure that passed template is on the list.
@@ -35,6 +46,15 @@ class Page < ActiveRecord::Base
 		def validate_template
 			unless template.empty? or self.class.templates.include? template
 				errors.add( :template, "is not on the templates list" )
+			end
+		end
+
+		##
+		# @brief Makes sure that empty slug is replaced with
+		# one generated from the passed title.
+		##
+		def prepare_slug
+			if slug.empty?
 			end
 		end
 end
