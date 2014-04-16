@@ -4,7 +4,7 @@ describe Page do
 	let( :custom_properties ) { "{ \"content\": \"custom text\" }" }
 	before :each do
 		Page.stub( :templates ).and_return( {
-			"home" => "Home"
+			"Home" => "home"
 		} )
 
 		@page = Page.new(
@@ -19,13 +19,6 @@ describe Page do
 		@page.save
 
 		expect( @page ).to have( 1 ).error_on( :title )
-	end
-
-	it "requires slug" do
-		@page.slug = ""
-		@page.save
-
-		expect( @page ).to have( 1 ).error_on( :slug )
 	end
 
 	it "slug is unique" do

@@ -26,8 +26,8 @@ class Page < ActiveRecord::Base
 	##
 	def self.templates
 		{
-			"home" => "Home",
-			"about" => "About"
+			"Home" => "home",
+			"About" => "about"
 		}
 	end
 
@@ -44,7 +44,7 @@ class Page < ActiveRecord::Base
 		# @brief Makes sure that passed template is on the list.
 		##
 		def validate_template
-			unless template.empty? or self.class.templates.include? template
+			unless template.empty? or self.class.templates.has_value? template
 				errors.add( :template, "is not on the templates list" )
 			end
 		end
