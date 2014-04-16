@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140414150410) do
+ActiveRecord::Schema.define(version: 20140416125905) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -56,5 +56,14 @@ ActiveRecord::Schema.define(version: 20140414150410) do
   end
 
   add_index "menu_items", ["parent_id"], name: "index_menu_items_on_parent_id"
+
+  create_table "pages", force: true do |t|
+    t.string   "title"
+    t.string   "slug"
+    t.string   "template"
+    t.text     "properties"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end
