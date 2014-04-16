@@ -14,3 +14,4 @@ gemspec
 # gem 'debugger'
 gem "activeadmin", github: "gregbell/active_admin"
 gem "activeadmin-sortable-tree", :github => "nebirhos/activeadmin-sortable-tree", :branch => "master"
+gem "friendly_id", "~>5.0.0", require: "friendly_id"

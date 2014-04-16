@@ -3,14 +3,10 @@ require 'spec_helper'
 describe Page do
 	let( :custom_properties ) { "{ \"content\": \"custom text\" }" }
 	before :each do
-		class Page
-			def self.templates
-				{
-					"home" => "Home",
-					"about" => "About"
-				}
-			end
-		end
+		Page.stub( :templates ).and_return( {
+			"home" => "Home"
+		} )
+
 		@page = Page.new(
 			title: "My first page",
 			slug: "my-first-page",
@@ -43,13 +39,14 @@ describe Page do
 
 	it "generates slug from title" do
 		@page.title = "another title"
+		@page.slug = nil
 		@page.save
 
 		expect( @page.slug ).to eq( "another-title" )
 	end
 
 	it "validates template existence" do
-		@page.template = "contact"
+		@page.template = "about"
 		@page.save
 
 		expect( @page ).to have( 1 ).error_on( :template )
