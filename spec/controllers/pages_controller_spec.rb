@@ -5,6 +5,8 @@ RSpec.configure do |config|
 end
 
 describe PagesController do
+	let( :custom_properties ) { { "key" => "value" } }
+
 	describe "GET 'index'" do
 		it "returns 404 on not json request" do
 			get :index, format: :html
@@ -19,10 +21,6 @@ describe PagesController do
 		end
 
 		it "returns pages if any created" do
-			custom_properties = {
-				"key" => "value"
-			}
-			
 			expected_json = [
 				{
 					id: 1,
@@ -61,9 +59,37 @@ describe PagesController do
 	end
 
 	describe "GET 'show'" do
-		it "returns http success" do
-			get 'show'
-			response.should be_success
+		it "returns 404 on not json request" do
+			get :index, format: :html
+
+			expect( response.status ).to eq( 404 )
+		end
+
+		it "returns 404 if page is not found" do
+			get :show, id: 2, format: :json
+
+			expect( response.status ).to eq( 404 )
+		end
+
+		it "returns page if found" do
+			expected_json = {
+				id: 1,
+				title: "Home",
+				slug: "home",
+				template: "home",
+				position: 0,
+				properties: custom_properties.to_json
+			}.to_json
+
+			Page.create(
+				title: "Home",
+				template: "home",
+				properties: custom_properties
+			);
+
+			get :show, id: 1, format: :json
+
+			expect( response.body ).to eq( expected_json )
 		end
 	end
 
