@@ -27,34 +27,34 @@ describe PagesController do
 					title: "Home",
 					slug: "home",
 					template: "home",
-					position: 0,
-					properties: custom_properties.to_json
+					position: nil,
+					properties: custom_properties
 				},
 				{
 					id: 2,
 					title: "About",
 					slug: "about",
 					template: "about",
-					position: 0,
-					properties: custom_properties.to_json
+					position: nil,
+					properties: custom_properties
 				}
 			].to_json
 
 			Page.create(
 				title: "Home",
 				template: "home",
-				properties: custom_properties
+				properties: custom_properties,
 			)
 
 			Page.create(
-				title: "about",
+				title: "About",
 				template: "about",
 				properties: custom_properties
 			)
 
 			get :index, format: :json
 
-			expect( response.body ).to eq( expect_json )
+			expect( response.body ).to eq( expected_json )
 		end
 	end
 
@@ -66,7 +66,7 @@ describe PagesController do
 		end
 
 		it "returns 404 if page is not found" do
-			get :show, id: 2, format: :json
+			get :show, id: "non-existing", format: :json
 
 			expect( response.status ).to eq( 404 )
 		end
@@ -74,20 +74,20 @@ describe PagesController do
 		it "returns page if found" do
 			expected_json = {
 				id: 1,
-				title: "Home",
-				slug: "home",
+				title: "Another page",
+				slug: "another-page",
 				template: "home",
-				position: 0,
-				properties: custom_properties.to_json
+				position: nil,
+				properties: custom_properties
 			}.to_json
 
 			Page.create(
-				title: "Home",
+				title: "Another page",
 				template: "home",
 				properties: custom_properties
 			);
 
-			get :show, id: 1, format: :json
+			get :show, id: "another-page", format: :json
 
 			expect( response.body ).to eq( expected_json )
 		end

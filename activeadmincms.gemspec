@@ -18,7 +18,6 @@ Gem::Specification.new do |s|
 
   s.add_dependency "rails", "~> 4.0.4"
   s.add_dependency "sass-rails", "4.0.2"
-  s.add_dependency "jbuilder"
 
   s.add_development_dependency "sqlite3"
   s.add_development_dependency "rspec-rails"

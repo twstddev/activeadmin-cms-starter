@@ -29,7 +29,6 @@ PATH
   remote: .
   specs:
     activeadmincms (0.0.1)
-      jbuilder
       rails (~> 4.0.4)
       sass-rails (= 4.0.2)
 
@@ -210,6 +209,7 @@ DEPENDENCIES
   database_cleaner
   friendly_id (~> 5.0.0)
   generator_spec
+  jbuilder
   rspec-rails
   spork-rails
   sqlite3
