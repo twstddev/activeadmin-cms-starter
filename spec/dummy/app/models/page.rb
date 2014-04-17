@@ -5,16 +5,12 @@ class Page < ActiveRecord::Base
 	validates :title, presence: true
 	validates :slug, presence: true
 	validates :slug, uniqueness: true
-	validate :validate_template
-
-	before_validation :prepare_slug
+	validate :validate_template,
+		:prepare_properties
 
 	after_initialize :init
 
-	def init
-		self.template ||= ""
-		self.slug ||= ""
-	end
+	serialize :properties, Hash
 
 	##
 	# @brief Contains the list of predefined templates, that
@@ -49,12 +45,14 @@ class Page < ActiveRecord::Base
 			end
 		end
 
-		##
-		# @brief Makes sure that empty slug is replaced with
-		# one generated from the passed title.
-		##
-		def prepare_slug
-			if slug.empty?
+		def init
+			self.template ||= ""
+			self.slug ||= ""
+		end
+
+		def prepare_properties
+			if !self.properties.is_a? Hash
+				self.properties = {}
 			end
 		end
 end

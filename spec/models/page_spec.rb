@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Page do
-	let( :custom_properties ) { "{ \"content\": \"custom text\" }" }
+	let( :custom_properties ) { { "content" => "custom text" } }
 	before :each do
 		Page.stub( :templates ).and_return( {
 			"Home" => "home"
@@ -36,6 +36,19 @@ describe Page do
 		@page.save
 
 		expect( @page.slug ).to eq( "another-title" )
+	end
+
+	it "saves properties" do
+		@page.save
+
+		expect( @page.properties ).to eq( custom_properties )
+	end
+
+	it "sets a default value to properties" do
+		@page.properties = ""
+		save_result = @page.save
+
+		expect( @page.properties ).to be_a( Hash )
 	end
 
 	it "validates template existence" do

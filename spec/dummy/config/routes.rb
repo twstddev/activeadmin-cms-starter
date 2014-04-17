@@ -1,4 +1,7 @@
 Dummy::Application.routes.draw do
+  get "pages/index"
+  get "pages/show"
+  get "index/show"
 	devise_for :admin_users, ActiveAdmin::Devise.config
 	ActiveAdmin.routes(self)
 	resources :menus, only: [ :index ]
