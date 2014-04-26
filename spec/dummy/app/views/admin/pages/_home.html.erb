@@ -1,0 +1,8 @@
+<%= f.semantic_fields_for :properties do |properties| %>
+	<%= properties.inputs "Additional" do |extra| %>
+		<%= properties.input :subtitle, input_html: { value: page.properties[ :subtitle ] } %>
+		<%= properties.input :content, as: :text, input_html: { value: page.properties[ :content ] } %>
+	<% end %>
+	<%= properties.inputs "Slider" do |slider| %>
+	<% end %>
+<% end %>

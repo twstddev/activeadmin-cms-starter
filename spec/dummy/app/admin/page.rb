@@ -1,4 +1,5 @@
 ActiveAdmin.register Page do
+	form partial: "form"
 	filter :title
 
 	config.sort_order = "position_asc"
@@ -32,16 +33,6 @@ ActiveAdmin.register Page do
 			def redirect_to_page_editing
 				redirect_to edit_admin_page_url( @page.friendly_id )
 			end
-	end
-
-	form do |f|
-		f.inputs "General" do
-			f.input :title
-			f.input :slug
-			f.input :template, as: :select, collection: Page.templates
-		end
-
-		f.actions
 	end
 
 	index as: :sortable do
