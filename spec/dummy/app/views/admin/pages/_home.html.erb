@@ -4,7 +4,7 @@
 		<%= properties.input :content, as: :text, input_html: { value: page.properties[ :content ] } %>
 	<% end %>
 	<%= properties.inputs "Slider" do %>
-		<%= properties.has_many_meta :slider do |slides| %>
+		<%= properties.has_many_meta :slider, values: page.properties[ "slider" ] do |slides, values| %>
 			<%= slides.input :title %>
 			<%= slides.input :description %>
 			<%= slides.input :alt_text %>

@@ -13,8 +13,18 @@ module MetaFormBuilder
 	# nested fields fieldset
 	##
 	def has_many_meta( association, options = {}, &block )
-		form_output = template.content_tag( :li, create_add_fields_button( association, &block ), class: "has_many_container #{association}", "data-sortable" => "position" ) 
-		form_output
+		values = options.values
+		# prepopulate with existing data
+		form_output = "".html_safe
+		form_output << values.class
+
+		values.each_with_index do |( key, value ), index|
+			form_output << build_fields_group( association, index, value, &block )
+		end
+
+		form_output << create_add_fields_button( association, &block )
+
+		template.content_tag( :li, form_output, class: "has_many_container #{association}", "data-sortable" => "position" ) 
 	end
 
 	private
@@ -34,10 +44,10 @@ module MetaFormBuilder
 		##
 		# @brief Outputs nested form HTML.
 		##
-		def build_fields_group( association, placeholder, &block )
+		def build_fields_group( association, placeholder, values = {}, &block )
 			content = semantic_fields_for association do |assoc|
-				assoc.semantic_fields_for placeholder do |nested|
-					block.call nested
+				assoc.semantic_fields_for placeholder.to_s do |nested|
+					block.call nested, values
 				end
 			end
 
