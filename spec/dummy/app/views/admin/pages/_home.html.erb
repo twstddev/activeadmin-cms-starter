@@ -3,6 +3,11 @@
 		<%= properties.input :subtitle, input_html: { value: page.properties[ :subtitle ] } %>
 		<%= properties.input :content, as: :text, input_html: { value: page.properties[ :content ] } %>
 	<% end %>
-	<%= properties.inputs "Slider" do |slider| %>
+	<%= properties.inputs "Slider" do %>
+		<%= properties.has_many_meta :slider do |slides| %>
+			<%= slides.input :title %>
+			<%= slides.input :description %>
+			<%= slides.input :alt_text %>
+		<% end %>
 	<% end %>
 <% end %>
