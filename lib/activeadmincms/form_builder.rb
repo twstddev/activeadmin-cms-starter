@@ -13,10 +13,9 @@ module MetaFormBuilder
 	# nested fields fieldset
 	##
 	def has_many_meta( association, options = {}, &block )
-		values = options.values
+		values = options[ :values ] || {}
 		# prepopulate with existing data
 		form_output = "".html_safe
-		form_output << values.class
 
 		values.each_with_index do |( key, value ), index|
 			form_output << build_fields_group( association, index, value, &block )

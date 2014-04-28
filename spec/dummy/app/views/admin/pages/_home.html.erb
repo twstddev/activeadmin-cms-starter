@@ -5,9 +5,14 @@
 	<% end %>
 	<%= properties.inputs "Slider" do %>
 		<%= properties.has_many_meta :slider, values: page.properties[ "slider" ] do |slides, values| %>
-			<%= slides.input :title %>
-			<%= slides.input :description %>
-			<%= slides.input :alt_text %>
+			<%= slides.input :title, input_html: { value: values[ :title ] } %>
+			<%= slides.input :description, input_html: { value: values[ :description ] } %>
+			<%= slides.input :alt_text, input_html: { value: values[ :alt_text ] } %>
+
+			<%= slides.has_many_meta :reviews, values: values[ :reviews ] do |review, values|%>
+				<%= review.input :title, input_html: { value: values[ :title ] } %>
+				<%= review.input :content, input_html: { value: values[ :content ] } %>
+			<% end %>
 		<% end %>
 	<% end %>
 <% end %>
