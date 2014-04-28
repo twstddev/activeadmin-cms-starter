@@ -17,7 +17,9 @@ module ActiveAdmin
 
 			def create_migrations
 				migration_template "migrations/1_create_menu_items.rb", "db/migrate/create_menu_items.rb"
+				sleep 1
 				migration_template "migrations/2_create_pages.rb", "db/migrate/create_pages.rb"
+				sleep 1
 				migration_template "migrations/3_extend_pages_table.rb", "db/migrate/extend_pages_table.rb"
 			end
 
