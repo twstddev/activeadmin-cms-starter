@@ -1,0 +1,12 @@
+<%= semantic_form_for [ :admin, @page ] do |f| %>
+	<%= f.inputs "General" do %>
+		<%= f.input :title %>
+		<%= f.input :slug %>
+		<%= f.input :template, as: :select, collection: Page.templates %>
+	<% end %>
+
+	<% unless @page.template.empty? %>
+		<%= render partial: @page.template, locals: { f: f, page: @page } %>
+	<% end %>
+	<%= f.actions %>
+<% end %>
