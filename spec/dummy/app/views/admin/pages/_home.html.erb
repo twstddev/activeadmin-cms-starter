@@ -11,7 +11,7 @@
 
 			<%= slides.has_many_meta :reviews, values: values[ :reviews ] do |review, values|%>
 				<%= review.input :title, input_html: { value: values[ :title ] } %>
-				<%= review.input :content, input_html: { value: values[ :content ] } %>
+				<%= review.input :content, input_html: { id: "suka", value: values[ :content ] } %>
 			<% end %>
 		<% end %>
 	<% end %>
