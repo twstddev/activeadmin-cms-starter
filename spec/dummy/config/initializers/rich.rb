@@ -99,7 +99,7 @@ if Object.const_defined?("Rich")
     # will be able to see your images, and upload files.
     # 
     # Example for Devise with an AdminUser model:
-    config.authentication_method = :authenticate_admin_user!
+    #   config.authentication_method = :authenticate_admin_user!
     # 
     # Default (NOT recommended in production environments): 
     # config.authentication_method = :none
