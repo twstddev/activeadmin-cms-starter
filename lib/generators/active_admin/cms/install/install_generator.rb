@@ -31,6 +31,7 @@ module ActiveAdmin
 			def copy_main_files
 				directory "admin", "app/admin"
 				directory "controllers", "app/controllers"
+				directory "inputs", "app/inputs"
 				directory "models", "app/models"
 				directory "views", "app/views"
 			end
