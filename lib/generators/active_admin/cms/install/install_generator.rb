@@ -13,6 +13,7 @@ module ActiveAdmin
 			def create_routes
 				route "resources :menus, only: [ :index ]"
 				route "resources :pages, only: [ :index, :show ]"
+				route 'get "/bootstrap", to: "bootstrap#index"'
 			end
 
 			def create_migrations
