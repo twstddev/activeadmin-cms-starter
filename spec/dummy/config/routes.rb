@@ -4,6 +4,7 @@ Dummy::Application.routes.draw do
 	ActiveAdmin.routes(self)
 	resources :menus, only: [ :index ]
 	resources :pages, only: [ :index, :show ]
+	get "/bootstrap", to: "bootstrap#index"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
