@@ -1,0 +1,6 @@
+<%= f.semantic_fields_for :properties, ActiveAdminCms::MetaFields.new( page.properties ) do |properties| %>
+	<%= properties.inputs "Additional" do |extra| %>
+		<%= properties.input :subtitle, as: :custom_rich_picker, config: { type: "image" } %>
+		<%= properties.input :content, as: :rich %>
+	<% end %>
+<% end %>
