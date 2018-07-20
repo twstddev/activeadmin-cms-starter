@@ -7,7 +7,7 @@ require "activeadmincms/version"
 Gem::Specification.new do |s|
   s.name        = "activeadmincms"
   s.version     = "0.0.1"
-  s.authors     = ["Rustam Chakin"]
+  s.authors     = ["none"]
   s.email       = ["twstd.dev@gmail.com"]
   s.homepage    = "https://github.com/twstddev/activeadmin-cms-starter"
   s.summary     = "A simple page and meta fields functionality."
